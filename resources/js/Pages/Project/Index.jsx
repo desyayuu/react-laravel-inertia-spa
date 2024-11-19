@@ -1,3 +1,4 @@
+import Pagination from "@/Components/Pagination";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { Link } from "@inertiajs/react";
@@ -59,13 +60,12 @@ export default function Index({auth, projects}) {
                                                 Delete
                                             </Link>
                                         </td>
-
                                     </tr>
-
                                 )
                                 )}
                             </tbody>
                         </table>
+                        <Pagination links={projects.meta.links} />
                     </div>
                 </div>
             </div>
