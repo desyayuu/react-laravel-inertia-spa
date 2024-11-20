@@ -2,7 +2,7 @@ import Pagination from "@/Components/Pagination";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { Link } from "@inertiajs/react";
-
+import { PROJECT_STATUS_TEXT_MAP, PROJECT_STATUS_CLASS_MAP} from "../constants";
 
 export default function Index({auth, projects}) {
     return (
@@ -42,7 +42,16 @@ export default function Index({auth, projects}) {
                                             <img src={project.image_path} style={{width:60}}/>
                                         </td>
                                         <td className="px-3 py-3">{project.name}</td>
-                                        <td className="px-3 py-3">{project.status}</td>
+                                        <td className="px-3 py-3">
+                                            <span
+                                                className={
+                                                    `px-2 py-1 rounded-lg text-xs font-medium text-white 
+                                                    ${PROJECT_STATUS_CLASS_MAP[project.status]}`
+                                                }
+                                            >
+                                                {PROJECT_STATUS_TEXT_MAP[project.status]}
+                                            </span>
+                                        </td>
                                         <td className="px-3 py-3">{project.created_at}</td>
                                         <td className="px-3 py-3">{project.due_date}</td>
                                         <td className="px-3 py-3">{project.createdBy.name}</td>

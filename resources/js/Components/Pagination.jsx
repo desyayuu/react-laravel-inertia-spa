@@ -5,6 +5,7 @@ export default function Pagination({links}){
         <nav className="text-center mt-4">
             {links.map((link)=>(
                 <Link
+                    preserveScroll={true}
                     href={link.url || ""}
                     key={link.url}
                     className={
