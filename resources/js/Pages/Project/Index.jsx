@@ -21,7 +21,7 @@ export default function Index({auth, projects, queryParams=null}) {
     }
 
     const onKeyPress = (name, e) => {
-        if(e.key === 'Enter') return;
+        if(e.key !== 'Enter') return;
         searchFieldChanges(name, e.target.value);
     }
 
@@ -61,10 +61,10 @@ export default function Index({auth, projects, queryParams=null}) {
                                     <th className="px-3 py-3">
                                         <TextInput
                                             className="w-full"
-                                            placeholder="Project Name"
                                             defaultValue={queryParams.name}
-                                            onBlur={e => searchFieldChanges('name', e.target.value)}
-                                            onKeyPress={e => onKeyPress('name', e)}
+                                            placeholder="Project Name"
+                                            onBlur={(e) => searchFieldChanges('name', e.target.value)}
+                                            onKeyPress={(e)=> onKeyPress('name', e)}
                                         
                                         />
                                     </th>
@@ -72,7 +72,7 @@ export default function Index({auth, projects, queryParams=null}) {
                                         <SelectInput
                                             className="w-full"
                                             defaultValue={queryParams.status}
-                                            onChange={e => searchFieldChanges('status', e.target.value)}
+                                            onChange={(e) => searchFieldChanges('status', e.target.value)}
                                         >
                                             <option value="">Select Status</option>
                                             <option value="pending">Pending</option>
