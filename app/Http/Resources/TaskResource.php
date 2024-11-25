@@ -7,9 +7,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Carbon\Carbon;
 use App\Http\Resources\UserResource;
 
-class ProjectResource extends JsonResource
+class TaskResource extends JsonResource
 {
-    public static $wrap = false;
     /**
      * Transform the resource into an array.
      *
@@ -24,7 +23,10 @@ class ProjectResource extends JsonResource
             'created_at' => (new Carbon($this->created_at))->format('d-m-Y'),
             'due_date' => (new Carbon($this->due_date))->format('d-m-Y'),
             'status' => $this->status,
+            'priority' => $this->priority,
             'image_path' => $this->image_path,
+            'project' => new ProjectResource($this->project),
+            'assignedUser' => $this->assignedUser ? new UserResource($this->assignedUser) : null,
             'createdBy' => new UserResource($this->createdBy),
             'updatedBy' => new UserResource($this->updatedBy),
         ];
